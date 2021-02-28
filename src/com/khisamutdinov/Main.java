@@ -38,5 +38,8 @@ public class Main {
         myList.addAll(myList2);
         // 10 -> 1 -> 9 -> 2 -> 8 -> 3 -> 7 -> 4 -> 6 -> 5 -> 110 -> 101 -> 109 -> 102 -> 108 -> 103 -> 107 -> 104 -> 106 -> 105 -> null
         myList.print();
+
+        // 4 -> 8 -> 105 -> 108 -> 9 -> 102 -> 101 -> 110 -> 10 -> 5 -> 2 -> 1 -> 103 -> 104 -> 3 -> 6 -> 109 -> 107 -> 106 -> 7 -> null
+        AdvancedList<Integer> shuffledList = myList.shuffle();
     }
 }

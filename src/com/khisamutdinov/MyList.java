@@ -5,16 +5,40 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.Optional;
 
-public class MyList<T> implements AdvancedList<T>, AuthorHolder {
+public class MyList<T> implements AdvancedList<T>, AuthorHolder, Cloneable {
     private static final int DEFAULT_CAPACITY = 10;
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
     private Object[] itemsData = {};
     private int size = 0;
 
+    public void setItemsData(Object[] itemsData) {
+        this.itemsData = itemsData;
+    }
+
     @Override
     public AdvancedList<T> shuffle() {
-        return null;
+        MyList<T> list = (MyList<T>) this.clone();
+        list.shuffleItemsData();
+        return list;
+    }
+
+    // Randomly rearranges the elements
+    public void shuffleItemsData() {
+        for (int i = 0; i < size; i++) {
+            // move element i to a random index in [i .. size-1]
+            int randomIndex = (int) (Math.random() * size - i);
+            swap(itemsData, i, i + randomIndex);
+        }
+    }
+
+    // Swaps the elements at the two given indexes
+    private final void swap(Object[] arr, int i, int j) {
+        if (i != j) {
+            Object temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
     }
 
     @Override
@@ -223,6 +247,18 @@ public class MyList<T> implements AdvancedList<T>, AuthorHolder {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    @Override
+    public Object clone() {
+        try {
+            MyList<?> v = (MyList<?>) super.clone();
+            v.setItemsData(Arrays.copyOf(itemsData, size));
+            return v;
+        } catch (CloneNotSupportedException e) {
+            // this shouldn't happen, since we are Cloneable
+            throw new InternalError(e);
+        }
     }
 
     private void rangeCheckForAdd(int index) {
