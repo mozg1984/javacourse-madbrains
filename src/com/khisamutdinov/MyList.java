@@ -154,7 +154,7 @@ public class MyList<T> implements AdvancedList<T>, AuthorHolder, Cloneable {
     @Override
     public Optional<T> get(int index) {
         T item = size == 0 || size <= index ? null : (T) itemsData[index];
-        return Optional.ofNullable(null);
+        return Optional.ofNullable(item);
     }
 
     @Override

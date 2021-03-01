@@ -1,7 +1,9 @@
 package com.khisamutdinov;
 
+import javax.swing.text.html.Option;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Optional;
 import java.util.Random;
 
 public class Main {
@@ -76,9 +78,22 @@ public class Main {
 
         // 10 -> 1 -> 9 -> 2 -> 8 -> 3 -> 7 -> 4 -> 6 -> 5 -> null
         myList.print();
+
+        // 10
         System.out.println(myList.size());
+
+        // 9
         System.out.println(myList.first(5));
+
+        // 1
+        System.out.println(myList.last(1));
+
+        // true
         System.out.println(myList.contains(6));
+
+        // 3
+        Optional<Integer> optional = myList.get(5);
+        System.out.println(optional.isPresent() ? optional.get() : null);
 
         MyList<Integer> myList2 = new MyList<>();
         myList.add(110);
@@ -97,7 +112,7 @@ public class Main {
         myList.print();
 
         // 4 -> 8 -> 105 -> 108 -> 9 -> 102 -> 101 -> 110 -> 10 -> 5 -> 2 -> 1 -> 103 -> 104 -> 3 -> 6 -> 109 -> 107 -> 106 -> 7 -> null
-        // AdvancedList<Integer> shuffledList = myList.shuffle();
+        AdvancedList<Integer> shuffledList = myList.shuffle();
 
         // 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 101 -> 102 -> 103 -> 104 -> 105 -> 106 -> 107 -> 108 -> 109 -> 110 -> null
         // Comparator<Integer> comparator = Comparator.comparing(Integer::intValue);
