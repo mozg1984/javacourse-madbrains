@@ -16,6 +16,10 @@ public class MyList<T> implements AdvancedList<T>, AuthorHolder, Cloneable {
         this.itemsData = itemsData;
     }
 
+    public Object[] getItemsData() {
+        return itemsData;
+    }
+
     @Override
     public AdvancedList<T> shuffle() {
         MyList<T> list = (MyList<T>) this.clone();
@@ -43,7 +47,19 @@ public class MyList<T> implements AdvancedList<T>, AuthorHolder, Cloneable {
 
     @Override
     public AdvancedList<T> sort(Comparator<T> comparator) {
-        return null;
+        MyList<T> list = (MyList<T>) this.clone();
+        list.mergeSort(comparator);
+        return list;
+    }
+
+    private void mergeSort(Comparator<T> comparator) {
+        new MergeSort().sort(itemsData, comparator);
+    }
+
+    public void trimToSize() {
+        if (size < itemsData.length) {
+            itemsData = (size == 0) ? itemsData : Arrays.copyOf(itemsData, size);
+        }
     }
 
     @Override

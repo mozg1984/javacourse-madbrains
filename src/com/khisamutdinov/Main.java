@@ -1,9 +1,8 @@
 package com.khisamutdinov;
 
-import java.util.Collections;
+import java.util.Comparator;
 
 public class Main {
-
     public static void main(String[] args) {
         MyList<Integer> myList = new MyList<>();
         myList.add(10);
@@ -40,6 +39,15 @@ public class Main {
         myList.print();
 
         // 4 -> 8 -> 105 -> 108 -> 9 -> 102 -> 101 -> 110 -> 10 -> 5 -> 2 -> 1 -> 103 -> 104 -> 3 -> 6 -> 109 -> 107 -> 106 -> 7 -> null
-        AdvancedList<Integer> shuffledList = myList.shuffle();
+        // AdvancedList<Integer> shuffledList = myList.shuffle();
+
+        // 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 101 -> 102 -> 103 -> 104 -> 105 -> 106 -> 107 -> 108 -> 109 -> 110 -> null
+        // Comparator<Integer> comparator = Comparator.comparing(Integer::intValue);
+        AdvancedList<Integer> sortedList = myList.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        });
     }
 }
