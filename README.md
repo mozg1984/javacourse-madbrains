@@ -1,5 +1,8 @@
 # Custom list implementation
-The list is built on the basis of an array, the sorting algorithm is [merge sort](https://en.wikipedia.org/wiki/Merge_sort) (parallel version). By default, the parallel version is only used if the number of elements in the array is greater than `LIMIT = 1 << 13`.
+The list is built on the basis of an array, the sorting algorithm is [merge sort](https://en.wikipedia.org/wiki/Merge_sort) (parallel version). By default, the parallel version is only used if the number of elements in the array is greater than `LIMIT = 1 << 13`. Default capacity is `DEFAULT_CAPACITY = 10`
+ and maximum supported array size is `MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8`.
+
+The implementation is represented by the class [`MyList<T>`](https://github.com/mozg1984/advanced_list/blob/master/src/com/khisamutdinov/MyList.java).
 
 Example of running merge sorting test:
 
