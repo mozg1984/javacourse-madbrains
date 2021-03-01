@@ -1,8 +1,66 @@
 package com.khisamutdinov;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Random;
 
 public class Main {
+    private static final Random RAND = new Random(42); // random number generator
+    private static final int LENGTH = 1000; // initial length of array to sort
+    private static final int RUNS   =  16;  // how many times to grow by 2?
+
+    public static Integer[] createRandomArray(int length) {
+        Integer[] array = new Integer[length];
+        for (int i = 0, n = array.length; i < n; i++) {
+            array[i] = RAND.nextInt(1000000);
+        }
+        return array;
+    }
+
+    public static void testMergeSort() {
+        int length = LENGTH;
+        int runs = RUNS;
+
+        for (int i = 1; i <= runs; i++) {
+            Integer[] arr = createRandomArray(length);
+
+            // run the algorithm and time how long it takes
+            long startTime = System.currentTimeMillis();
+            new MergeSort().sort(arr, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer o1, Integer o2) {
+                    return o1.compareTo(o2);
+                }
+            });
+            long endTime = System.currentTimeMillis();
+
+            System.out.printf("%10d elements  =>  %6d ms \n", length, endTime - startTime);
+            length *= 2; // double size of array for next time
+        }
+    }
+
+    public static void testParallelMergeSort() {
+        int length = LENGTH;
+        int runs = RUNS;
+
+        for (int i = 1; i <= runs; i++) {
+            Integer[] arr = createRandomArray(length);
+
+            // run the algorithm and time how long it takes
+            long startTime = System.currentTimeMillis();
+            new MergeSort().parallelSort(arr, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer o1, Integer o2) {
+                    return o1.compareTo(o2);
+                }
+            });
+            long endTime = System.currentTimeMillis();
+
+            System.out.printf("%10d elements  =>  %6d ms \n", length, endTime - startTime);
+            length *= 2; // double size of array for next time
+        }
+    }
+
     public static void main(String[] args) {
         MyList<Integer> myList = new MyList<>();
         myList.add(10);
@@ -49,5 +107,8 @@ public class Main {
                 return o1.compareTo(o2);
             }
         });
+
+//        testMergeSort();
+//        testParallelMergeSort();
     }
 }

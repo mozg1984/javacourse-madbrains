@@ -53,7 +53,7 @@ public class MyList<T> implements AdvancedList<T>, AuthorHolder, Cloneable {
     }
 
     private void mergeSort(Comparator<T> comparator) {
-        new MergeSort().sort(itemsData, comparator);
+        new MergeSort().parallelSort(itemsData, comparator);
     }
 
     public void trimToSize() {
