@@ -6,7 +6,7 @@ The implementation is represented by the class [`MyList<T>`](https://github.com/
 
 Example of running merge sorting test:
 
-- MergeSort:
+- MergeSort (parallel version with `8 threads`):
 
           1000 elements  =>       3 ms
           2000 elements  =>       1 ms
@@ -25,7 +25,7 @@ Example of running merge sorting test:
       16384000 elements  =>    3527 ms
       32768000 elements  =>    7617 ms
 
-- MergeSort (parallel version with `8 threads`):
+- MergeSort:
 
           1000 elements  =>       3 ms
           2000 elements  =>       1 ms
