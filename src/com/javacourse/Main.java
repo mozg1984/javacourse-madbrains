@@ -1,7 +1,9 @@
-package com.khisamutdinov;
+package com.javacourse;
 
-import javax.swing.text.html.Option;
-import java.util.Arrays;
+import com.javacourse.homework.part1.AdvancedList;
+import com.javacourse.homework.part1.MergeSort;
+import com.javacourse.homework.part1.MyList;
+
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.Random;

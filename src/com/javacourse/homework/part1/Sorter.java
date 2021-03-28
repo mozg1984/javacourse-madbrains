@@ -1,4 +1,6 @@
-package com.khisamutdinov;
+package com.javacourse.homework.part1;
+
+import com.javacourse.homework.part1.MergeSort;
 
 import java.util.Comparator;
 

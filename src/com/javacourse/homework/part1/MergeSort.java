@@ -1,4 +1,4 @@
-package com.khisamutdinov;
+package com.javacourse.homework.part1;
 
 import java.util.Arrays;
 import java.util.Comparator;
